@@ -22,7 +22,7 @@ fsm_by_constituency_and_school_type <- fsm_by_school_and_constituency %>%
     Data >= 0
   ) %>%
   summarise(
-    CountUnder16EligibleForFreeSchoolMeals = sum(Data)
+    CountEligibleForFreeSchoolMeals5to15 = sum(Data)
   )
 
 #
@@ -30,7 +30,7 @@ fsm_by_constituency_and_school_type <- fsm_by_school_and_constituency %>%
 #
 
 assert_that(
-  fsm_by_constituency_and_school_type %>% pull(CountUnder16EligibleForFreeSchoolMeals) %>% sum
+  fsm_by_constituency_and_school_type %>% pull(CountEligibleForFreeSchoolMeals5to15) %>% sum
   %in% 74000:76000
 )
 
@@ -54,24 +54,24 @@ assert_that(
 
 fsm_by_constituency <- fsm_by_constituency_and_school_type %>%
   mutate(
-    SchoolType = paste0("CountUnder16EligibleForFreeSchoolMeals.", SchoolType %>% str_to_title() %>% str_replace_all("\\s+", ""))
+    SchoolType = paste0("CountEligibleForFreeSchoolMeals5to15.", SchoolType %>% str_to_title() %>% str_replace_all("\\s+", ""))
   ) %>%
   pivot_wider(
     names_from = SchoolType,
-    values_from = CountUnder16EligibleForFreeSchoolMeals
+    values_from = CountEligibleForFreeSchoolMeals5to15
   ) %>%
   replace_na(list(
-    CountUnder16EligibleForFreeSchoolMeals.PrimarySchools = 0,
-    CountUnder16EligibleForFreeSchoolMeals.SecondarySchools = 0,
-    CountUnder16EligibleForFreeSchoolMeals.SpecialSchools = 0,
-    CountUnder16EligibleForFreeSchoolMeals.MiddleSchools = 0
+    CountEligibleForFreeSchoolMeals5to15.PrimarySchools = 0,
+    CountEligibleForFreeSchoolMeals5to15.SecondarySchools = 0,
+    CountEligibleForFreeSchoolMeals5to15.SpecialSchools = 0,
+    CountEligibleForFreeSchoolMeals5to15.MiddleSchools = 0
   )) %>%
   mutate(
-    CountUnder16EligibleForFreeSchoolMeals.Total = sum(
-      CountUnder16EligibleForFreeSchoolMeals.PrimarySchools,
-      CountUnder16EligibleForFreeSchoolMeals.SecondarySchools,
-      CountUnder16EligibleForFreeSchoolMeals.SpecialSchools,
-      CountUnder16EligibleForFreeSchoolMeals.MiddleSchools
+    CountEligibleForFreeSchoolMeals5to15.Total = sum(
+      CountEligibleForFreeSchoolMeals5to15.PrimarySchools,
+      CountEligibleForFreeSchoolMeals5to15.SecondarySchools,
+      CountEligibleForFreeSchoolMeals5to15.SpecialSchools,
+      CountEligibleForFreeSchoolMeals5to15.MiddleSchools
     )
   )
 
