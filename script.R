@@ -41,24 +41,38 @@ fsm_vs_relpov_map <- ggplot() +
 fsm_vs_relpov_legend <- bi_legend(
     pal = fsm_vs_relpov_pal,
     dim = 3,
-    xlab = "Higher % of children \naged 0 to 15\nin relative poverty\nafter housing costs",
-    ylab = "Higher % of children \naged 5 to 15 eligible for \nfree school meals",
-    size = 7
+    xlab = "",#"\n\nHigher % of children \naged 0 to 15 \nin income deprivation",
+    ylab = "",#"Higher % of children \naged 5 to 15 eligible for \nfree school meals",
+    size = 12
+  )
+
+fsm_vs_relpov_legend_plot <- ggdraw() +
+  draw_plot(fsm_vs_relpov_legend, 0.05, 0.05, 0.9, 0.9) + 
+  draw_text("Red areas may be particularly \nbadly served by current policy.",
+    0.85, 0.38, hjust=0, size=6.5, colour = '#ad394e'
+    ) +
+  # x-axis
+  draw_text("Higher % of children \naged 0 to 15\nin relative poverty\nafter housing costs",
+    0.58, -0.08, hjust=0.5, vjust=0, size=7
+  ) +
+  # y-axis
+  draw_text("Higher % of children \naged 5 to 15 eligible for \nfree school meals",
+    0, 0.5, hjust=0.5, vjust=0.5, size=7, angle=90
   )
 
 fsm_vs_relpov_plot <- ggdraw() +
   draw_text(
     "Eligibility for Free School Meals in 2020 vs\nEstimated Relative Poverty"
-  , 0.5, 0.98, size=14, hjust=0.5, vjust=1) +
+  , 0.5, 0.98, size=14, hjust=0.5, vjust=1, family="Bahnschrift") +
 
   draw_plot(fsm_vs_relpov_map, 0.005, 0, 0.95, 0.95) +
-  draw_plot(fsm_vs_relpov_legend, 0.05, .38, 0.28, 0.28) + 
+  draw_plot(fsm_vs_relpov_legend_plot, 0.05, .38, 0.28, 0.28) + 
   draw_text(
     "‘Relative poverty’ is estimated using DWP/HMRC income statistics
 combined with local housing costs information.
 Source: endchildpoverty.org.uk, CSRP at Loughborough University
 "
-  , 0.05, 0.05, size=8, hjust=0 , colour="#777777")
+  , 0.05, 0.05, size=6.5, hjust=0 , colour="#777777")
 
 
 fsm_vs_incdep_pal = "DkViolet"
@@ -75,24 +89,39 @@ fsm_vs_incdep_map <- ggplot() +
 fsm_vs_incdep_legend <- bi_legend(
     pal = fsm_vs_relpov_pal,
     dim = 3,
-    xlab = "\n\nHigher % of children \naged 0 to 15 \nin income deprivation",
-    ylab = "Higher % of children \naged 5 to 15 eligible for \nfree school meals",
-    size = 7
+    xlab = "",#"\n\nHigher % of children \naged 0 to 15 \nin income deprivation",
+    ylab = "",#"Higher % of children \naged 5 to 15 eligible for \nfree school meals",
+    size = 12
+  )
+
+fsm_vs_incdep_legend_plot <- ggdraw() +
+  draw_plot(fsm_vs_incdep_legend, 0.05, 0.05, 0.9, 0.9) + 
+  draw_text("Red areas may be particularly \nbadly served by current policy.",
+    0.85, 0.38, hjust=0, size=6.5, colour = '#ad394e'
+    ) +
+  # x-axis
+  draw_text("Higher % of children \naged 0 to 15 \nin income deprivation",
+    0.58, -0.05, hjust=0.5, vjust=0, size=7
+  ) +
+  # y-axis
+  draw_text("Higher % of children \naged 5 to 15 eligible for \nfree school meals",
+    0, 0.5, hjust=0.5, vjust=0.5, size=7, angle=90
   )
 
 fsm_vs_incdep_plot <- ggdraw() +
   draw_text(
     "Eligibility for Free School Meals in 2020 vs\nWIMD 2019 Income Deprivation indicator"
-  , 0.5, 0.98, size=14, hjust=0.5, vjust=1) +
+  , 0.5, 0.98, size=14, hjust=0.5, vjust=1, family="Bahnschrift") +
 
   draw_plot(fsm_vs_incdep_map, 0.005, 0, 0.95, 0.95) +
-  draw_plot(fsm_vs_incdep_legend, 0.05, .38, 0.28, 0.28) + 
+  draw_plot(fsm_vs_incdep_legend_plot, 0.05, 0.38, 0.28, 0.28) + 
   draw_text(
     "‘Income deprivation’ is a WIMD 2019 indicator based on
 income-related benefit claimants, Tax Credit recipients,
 supported asylum seekers, and people on Universal Credit.
 Source: statswales.gov.wales"
-  , 0.05, 0.05, size=8, hjust=0, colour="#777777")
+  , 0.05, 0.06, size=6.5, hjust=0, colour="#777777")
 
+fsm_vs_incdep_plot
 
 
