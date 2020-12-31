@@ -4,9 +4,9 @@ library(assertthat)
 crp_by_constituency <- readxl::read_xlsx(
   "data/Local-child-poverty-estimates-ahc-october-2020_revised.xlsx", 
   sheet = "Parliamentary Constituency",
-  range = "A3:H652",
-  col_types = c("skip","skip","text","skip","skip","skip","skip","numeric"),
-  col_names = c("ConstituencyCodeW07", "ChildrenUnder16InRelativePovertyAfterHousingCosts")
+  range = "A3:M652",
+  col_types = c("skip","skip","text","skip","skip","skip","skip","numeric", "skip","skip","skip","skip","numeric"),
+  col_names = c("ConstituencyCodeW07", "ChildrenUnder16InRelativePovertyAfterHousingCosts", "PropChildrenUnder16InRelativePovertyAfterHousingCosts")
   ) %>%
   filter(ConstituencyCodeW07 %>% str_detect("^W07")) %>%
   mutate(ChildrenUnder16InRelativePovertyAfterHousingCosts = round(ChildrenUnder16InRelativePovertyAfterHousingCosts))
