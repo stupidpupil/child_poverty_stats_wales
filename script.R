@@ -15,6 +15,8 @@ constituencies <- read_csv("data/constituencies.csv") %>%
     CountEligibleForFreeSchoolMeals5to15.Total/CountAllPupils5to15.Total
   )
 
+constituencies %>% write_csv("outputs/stats_by_constituency.csv")
+
 library(sf)
 library(biscale)
 library(ggplot2)
@@ -74,6 +76,7 @@ Source: endchildpoverty.org.uk, CRSP at Loughborough University
 "
   , 0.05, 0.05, size=6.5, hjust=0 , colour="#777777")
 
+save_plot("outputs/fsm_vs_relpov.png", fsm_vs_relpov_plot, base_width=6.5, base_height=7.1)
 
 fsm_vs_incdep_pal = "DkViolet"
 
@@ -122,6 +125,5 @@ supported asylum seekers, and people on Universal Credit.
 Source: statswales.gov.wales"
   , 0.05, 0.06, size=6.5, hjust=0, colour="#777777")
 
-fsm_vs_incdep_plot
-
+save_plot("outputs/fsm_vs_incdep.png", fsm_vs_incdep_plot, base_width=6.5, base_height=7.1)
 
