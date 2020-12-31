@@ -62,7 +62,7 @@ fsm_vs_relpov_legend_plot <- ggdraw() +
 
 fsm_vs_relpov_plot <- ggdraw() +
   draw_text(
-    "Eligibility for Free School Meals in 2020 vs\nEstimated Relative Poverty"
+    "Eligibility for Free School Meals in 2020 vs\nEstimated Relative Poverty After Housing Costs"
   , 0.5, 0.98, size=14, hjust=0.5, vjust=1, family="Bahnschrift") +
 
   draw_plot(fsm_vs_relpov_map, 0.005, 0, 0.95, 0.95) +
@@ -70,7 +70,7 @@ fsm_vs_relpov_plot <- ggdraw() +
   draw_text(
     "‘Relative poverty’ is estimated using DWP/HMRC income statistics
 combined with local housing costs information.
-Source: endchildpoverty.org.uk, CSRP at Loughborough University
+Source: endchildpoverty.org.uk, CRSP at Loughborough University
 "
   , 0.05, 0.05, size=6.5, hjust=0 , colour="#777777")
 
